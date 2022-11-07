@@ -10,7 +10,7 @@
     <h1>Lista Fumetti:</h1>
     @foreach ($Comics as $Comic)
 
-   <a href=""><h5>{{$Comic['Titolo']}}</h5></a>
+   <a href="{{route('Comics.show', $Comic->id)}}"><h5>{{$Comic['Titolo']}}</h5></a>
 
 
 

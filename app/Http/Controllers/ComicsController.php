@@ -46,7 +46,8 @@ class ComicsController extends Controller
      */
     public function show($id)
     {
-        //
+        $Comic = ComicsTable::find($id);
+        return view('Comics.Show', compact('Comic'));
     }
 
     /**
