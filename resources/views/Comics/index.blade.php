@@ -12,7 +12,7 @@
 
    <a href="{{route('Comics.show', $Comic->id)}}"><h5>{{$Comic['Titolo']}}</h5></a>
 
-    <form action="{{route('Comics.destroy',$Comic->id)}}" method="POST">
+    <form action="{{route('Comics.destroy',$Comic->id)}}" method="POST" onsubmit="alert('Sei sicuro di voler cancellare?')">
     @csrf
     @method('DELETE')
 
