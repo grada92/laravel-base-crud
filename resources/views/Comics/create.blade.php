@@ -7,19 +7,33 @@
     <title>Form</title>
 </head>
 <body>
+    <h2>Add Comic</h2>
     <form action="{{route('Comics.store')}}" method="post">
         @csrf
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+
+                @endforeach
+            </ul>
+
+        </div>
+
+        @endif
         <label for="Titolo">Inserisci Titolo</label>
-        <input type="text" name="Titolo">
+        <input type="text" name="Titolo" value="{{ old('Titolo', '') }}">
 
         <label for="Copertina">Inserisci Copertina</label>
-        <input type="text" name="Copertina">
+        <input type="text" name="Copertina" value="{{ old('Copertina', '') }}">
 
         <label for="type">Inserisci Tipo di Fumetto</label>
-        <input type="text" name="type">
+        <input type="text" name="type" value="{{ old('type', '') }}">
 
         <label for="Description">Inserisci Descrizione</label>
-        <input type="text" name="Description">
+        <input type="text" name="Description" value="{{ old('Description', '') }}">
 
         <input type="submit" value="Invia">
     </form>

@@ -34,13 +34,24 @@ class ComicsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   // Aggiunto Validatore
+        $request->validate([
+            'Titolo'=> 'required|string|min:5|max:200',
+            'Copertina'=> 'required|string|min:5|max:200',
+            'type'=> 'required|string|min:5|max:200',
+            'Description'=> 'required|string|min:5|max:400',
+
+
+        ]);
+
+
         $data = $request->all();
         $newComics = new ComicsTable;
         $newComics->Titolo=$data['Titolo'];
         $newComics->Copertina=$data['Copertina'];
         $newComics->type=$data['type'];
         $newComics->Description=$data['Description'];
+
 
         $newComics->save();
         return redirect()->route('Comics.index');
